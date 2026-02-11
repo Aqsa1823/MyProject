@@ -1,0 +1,10 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 3E94-CD24
+
+ Directory of C:\Users\DELL\OneDrive\Desktop\MyProject
+
+02/11/2026  05:05 PM    <DIR>          .
+02/11/2026  05:05 PM    <DIR>          ..
+02/11/2026  05:05 PM                 0 tets1.txt
+               1 File(s)              0 bytes
+               2 Dir(s)  54,110,838,784 bytes free
