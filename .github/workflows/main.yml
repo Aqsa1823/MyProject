@@ -1,14 +1,12 @@
 name: CI/CD pipline
-'on':
+on:
   push:
-    branches:
-      - main
+    branches: ['main']
   pull_request:
-    branches:
-      - main
+    branches: ['main']
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
     steps:
       - name: Installing node
         uses: actions/setup-node@v6.0.0
@@ -21,9 +19,7 @@ jobs:
       - name: Cloning github repository
         uses: actions/checkout@v4
       - name: Run tests
-        run: >-
-          newman run CategoryCollection.json -r htmlextra
-          --reporter-htmlextra-export Category.html --verbose
+        run:  newman run CategoryCollection.json -r htmlextra --reporter-htmlextra-export Category.html --verbose
           --suppress-exit-code
       - name: Send results via email
         uses: dawidd6/action-send-mail@v6
