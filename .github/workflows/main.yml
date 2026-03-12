@@ -1,0 +1,40 @@
+name: CI/CD pipline
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installing node
+        uses: actions/setup-node@v6.0.0
+        with:
+          node-version: v24.11.1
+      - name: Installing newman
+        run: npm i -g newman@6.2.1
+      - name: Installing reporting utility
+        run: npm install -g newman-reporter-htmlextra
+      - name: Cloning github repository
+        uses: actions/checkout@v4
+      - name: Run tests
+        run: >-
+          newman run CategoryCollection.json -r htmlextra
+          --reporter-htmlextra-export Category.html --verbose
+          --suppress-exit-code
+      - name: Send results via email
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: '${{secrets.EMAILUSERNAME}}'
+          password: '${{secrets.EMAILPASSWORD}}'
+          subject: Automation Test Result
+          to: aqsa3260@gmail.com
+          cc: muhammadaeraz@outlook.com
+          from: '${{secrets.EMAILUSERNAME}}'
+          attachments: Category.html
