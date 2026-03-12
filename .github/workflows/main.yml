@@ -25,12 +25,11 @@ jobs:
         uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
-          server_port: 587
-          secure: false
+          server_port: 465
+          secure: true
           username: '${{secrets.EMAILUSERNAME}}'
           password: '${{secrets.EMAILPASSWORD}}'
           subject: Automation Test Result
           to: aqsa3260@gmail.com
-          cc: muhammadaeraz@outlook.com
           from: '${{secrets.EMAILUSERNAME}}'
           attachments: Category.html
