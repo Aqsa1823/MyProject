@@ -19,8 +19,7 @@ jobs:
       - name: Cloning github repository
         uses: actions/checkout@v4
       - name: Run tests
-        run:  newman run CateogryCollection2.json -r htmlextra --reporter-htmlextra-export Category.html --verbose
-          --suppress-exit-code
+        run:  newman run CateogryCollection2.json -r htmlextra --reporter-htmlextra-export Category.html --reporter-htmlextra-inline-assets
       - name: Send results via email
         uses: dawidd6/action-send-mail@v6
         with:
