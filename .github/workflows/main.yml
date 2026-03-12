@@ -25,8 +25,8 @@ jobs:
         uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
+          server_port: 587
+          secure: false
           username: '${{secrets.EMAILUSERNAME}}'
           password: '${{secrets.EMAILPASSWORD}}'
           subject: Automation Test Result
